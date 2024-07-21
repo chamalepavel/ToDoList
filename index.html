@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mi lista de Tareas</title>
+        <script>
+            let miListaDeTareas = [];
+            class Tarea {
+                index;
+                texto;
+                completada = false;
+
+                constructor(index,textTarea){
+                    this.texto = textTarea;
+                    this.index =  index;
+                }
+
+                marcarCompletada() {
+                    this.completada = true;
+                }
+
+            }
+
+            function pintarTabla(){
+                    
+            }
+
+            function agregarTareaNueva(){
+                let elemento = document.getElementById("tareaNueva");
+                let nuevaTarea = new Tarea(miListaDeTareas.length, elemento.value);
+                elemento.value = '';
+                miListaDeTareas.push(nuevaTarea);
+                
+                let miTabla = document.getElementById("miTabla");
+                console.log(miTabla);
+                let nuevaFila = miTabla.insertRow(nuevaTarea.index + 1);
+                nuevaFila.id
+                let celda0 = nuevaFila.insertCell(0);
+                celda0.innerHTML = `
+                    <input type="checkbox" >
+                `;
+                let celda1 = nuevaFila.insertCell(1);
+                celda1.innerHTML = nuevaTarea.texto;
+                let celda2 = nuevaFila.insertCell(2);
+                celda2.innerHTML = `<input type="button" value="Eliminar" >`;
+            }
+        </script>
+        <link rel="stylesheet" href="my-styles.css">
+    </head>
+    <body>
+        <h1>Mi programa de tareas</h1>
+        
+        <label for="tareaNueva">Agregar tarea nueva:</label>
+        <textarea id="tareaNueva" name="tareaNueva" rows="3" cols="50">
+        </textarea> 
+        <button onclick="agregarTareaNueva()">
+            Agregar tarea
+        </button>
+        <h3>Listado de tareas</h3>
+        <table id="miTabla">
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Acciones</th>
+            </tr>
+            <!-- <script>
+                for( tarea in miListaDeTareas){
+                    document.write(`<tr> 
+                <td>
+                   
+                </td>
+                <td>Tarea 1</td>
+                <td><input type="button" value="Eliminar" ></td>
+              </tr>
+                        `)
+                }
+            </script> -->
+            
+            
+            
+          </table>
+    </body>
+</html>
